@@ -7,8 +7,7 @@ digitalocean:
 
   # digitalocean personal access token for API access
   # see: https://docs.digitalocean.com/reference/api/create-personal-access-token/
-  #token: "<paste your personal access token here>"
-  token: "dop_v1_0bbca67a638f67b434dae05b3bf13fce9d547222c88d8f900eba250c9d07ab74"
+  token: "<paste your personal access token here>"
 
   # target digitalocean region for the lab deployment
   # see: https://docs.digitalocean.com/platform/regional-availability/
