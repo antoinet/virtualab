@@ -33,7 +33,7 @@ data "digitalocean_droplet_snapshot" "labbox_snapshot" {
 resource "digitalocean_droplet" "labbox" {
   image    = data.digitalocean_droplet_snapshot.labbox_snapshot.id
   count    = local.config["digitalocean"]["labbox"]["count"]
-  name     = "${local.config["digitalocean"]["labbox"]["droplet_name_prefix"]}-${format("%02d", count.index + 1)}"
+  name     = "${local.config["digitalocean"]["labbox"]["droplet_name_prefix"]}-${count.index + 1}"
   region = local.config["digitalocean"]["region"]
   size     = local.config["digitalocean"]["labbox"]["droplet_size"]
   vpc_uuid = digitalocean_vpc.virtualab-network.id

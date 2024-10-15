@@ -13,7 +13,7 @@ In this case, the builder spins up a `ubuntu-24-04-x64` base image from DigitalO
 ## Usage
 If this is the first time invoking `packer`, you need to initialize it:
 ```bash
-$ packer init
+$ packer init jumphost.pkr.hcl
 ```
 
 To create the jumphost image, simply execute the following command:

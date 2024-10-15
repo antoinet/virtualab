@@ -8,11 +8,24 @@ This terraform configuration will deploy all resources needed during lab operati
  * jumphost
  * labbox droplets
 
-**Note**: these resources will generate significant costs, especially when operating a large number of labbox droplets.
-Make sure to destroy the infra after use:
-```
-$ terraform destroy
-```
+**Note**: these resources will generate significant costs, especially when operating a large number of labbox droplets. Make sure to destroy the infra after use.
+
 
 ## Prerequisites
-Prior to deploying the infrastructure resources, make sure to apply the terraform resources in the setup first.
+Prior to deploying the infrastructure resources, make sure to deploy the resources in the [setup folder](../setup/) first.
+
+## Usage
+If this is the first time invoking `terraform`, you need to initialize it:
+```bash
+$ terraform init
+```
+
+To spin up the lab infrastructure, simply execute the following command:
+```bash
+$ terraform apply
+```
+
+To decommission the lab infrastructure, use this command:
+```bash
+$ terraform destroy
+```
