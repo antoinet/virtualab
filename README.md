@@ -1,4 +1,4 @@
-![Virtua Lab](assets/virtualab-logo.png)
+![VirtuaLab](assets/virtualab-logo.png)
 
 Virtua Lab lets you build your own cloud virtual machine lab, whether you want to teach a class,
 train professionals, run a hackathon, host a hands-on-lab, etc.
@@ -9,7 +9,7 @@ lab boxes as you want (or can) spin up.
 
 ## Architecture
 
-TODO: architecture diagram
+![VirtuaLab Architecture](assets/virtualab.drawio.png)
 https://do.co/diagram-kit
 
 ## Prerequisites

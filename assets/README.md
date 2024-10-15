@@ -1,0 +1,1 @@
+Architecture diagram made with the [DigitalOcean diagram kit](https://do.co/diagram-kit).
