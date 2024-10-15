@@ -27,7 +27,7 @@
 packer {
   required_plugins {
     digitalocean = {
-      version = ">= 1.0.4"
+      version = ">= 1.4.0"
       source  = "github.com/digitalocean/digitalocean"
     }
   }
@@ -46,7 +46,7 @@ source "digitalocean" "jumphost-source" {
   droplet_name     = "jumphost-packer-build"
   snapshot_name    = local.config["digitalocean"]["jumphost"]["snapshot_name"]
   snapshot_regions = [local.config["digitalocean"]["region"]]
-  tags             = ["packer", "jumphost"]
+  tags             = ["packer", "custom", "jumphost"]
 }
 
 build {

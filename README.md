@@ -40,4 +40,13 @@ ns3.digitalocean.com
 
 For details, see: [Point to DigitalOcean Name Servers From Common Domain Registrars](https://docs.digitalocean.com/products/networking/dns/getting-started/dns-registrars/).
 
-### 
+### Add your SSH key
+
+Add at least one SSH key to your DigitalOcean account. This will be used to access your running droplets. See [How to Add SSH Public Keys to DigitalOcean](https://docs.digitalocean.com/platform/teams/upload-ssh-keys/) for details.
+
+
+## Tips / Tricks
+
+### Increase Droplet Limit
+
+If you need to create more droplets than your current limit allows, you can request an increase. See [How do I increase my Droplet limit?](https://www.digitalocean.com/community/questions/how-do-i-increase-my-droplet-limit) for details.

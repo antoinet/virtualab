@@ -28,8 +28,9 @@ If this is the first time invoking `packer`, you need to initialize it:
 $ packer init kali.pkr.hcl
 ```
 
+Then, to build the image, run this:
 ```bash
 $ packer build kali.pkr.hcl
 ```
 
-Get yourself a cup of 🍵, the build process takes 30-60 mins depending on your system configuration and network speed.
+Get yourself a cup of 🍵, the build process takes 30-60 mins depending on your system configuration, uploading the image may take another 20 mins based on your network speed, and finally the custom image import can take up to 1 hour.
