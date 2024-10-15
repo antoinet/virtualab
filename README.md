@@ -10,7 +10,7 @@ lab boxes as you want (or can) spin up.
 ## Architecture
 
 ![VirtuaLab Architecture](assets/virtualab.drawio.png)
-https://do.co/diagram-kit
+
 
 ## Prerequisites
 
@@ -18,6 +18,7 @@ You will need the following software to build the lab:
 
  * [Terraform](https://www.terraform.io/), or alternatively [OpenTofu](https://opentofu.org/) (not tested) to provision the DigitalOcean resources
  * [Packer](https://www.packer.io/) to create the VM images (jumphost and lab boxes)
+ * [VirtualBox](https://www.virtualbox.org/)
  * [Python 3](https://www.python.org/)
 
 Obviously, you will also need a DigitalOcean subscription. Get $200 of credit using the following link:
@@ -25,7 +26,6 @@ Obviously, you will also need a DigitalOcean subscription. Get $200 of credit us
 [![DigitalOcean Referral Badge](https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%203.svg)](https://www.digitalocean.com/?refcode=1ec7baf80a5d&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)
 
 ## Setup Instructions
-
 
 ### DNS Setup
 
