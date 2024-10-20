@@ -100,7 +100,7 @@ def automap():
     for name in jq.all('.droplets[].name', dropletmgr.list()):
         if name.count('-') > 0:
             print(f"[+] automap {name}")
-            password = config['digitalocean']['labbox']['password_prefix'] + name.split("-")[1]
+            password = config['digitalocean']['labbox']['password_prefix'] + "-" + name.split("-")[1]
             add_user_with_connection(name, password)
 
 def main(args):
