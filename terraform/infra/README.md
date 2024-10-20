@@ -12,10 +12,12 @@ This terraform configuration will deploy all resources needed during lab operati
 
 
 ## Prerequisites
-Prior to deploying the infrastructure resources, make sure to deploy the resources in the [setup folder](../setup/) first.
+
+ 1. Prior to deploying the infrastructure resources, make sure to deploy the resources in the [setup folder](../setup/) first.
+ 2. Images for the jumphost and the labboxes must be created before you can spin up the corresponding droplets. See instructions in the [packer](../../packer/) folder for details.
 
 ## Usage
-If this is the first time invoking `terraform`, you need to initialize it:
+If this is the first time invoking `terraform` in this folder, you need to initialize it:
 ```bash
 $ terraform init
 ```

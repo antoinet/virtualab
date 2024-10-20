@@ -4,6 +4,12 @@
 
 This directory contains the resources required to create a lab box image based on [Kali Linux](https://www.kali.org), an open-source, Debian-based Linux distribution geared towards various information security tasks, such as Penetration Testing, Security Research, Computer Forensics and Reverse Engineering.
 
+---
+
+⚠️ This packer configuration is not in working order right now. You are welcome to submit improvements. Until then, you might prefer to manually create a Kali Linux image following the [official Kali documentation](https://www.kali.org/docs/cloud/digitalocean/).
+
+---
+
 DigitalOcean does not provide any Kali Linux image to build upon. Rather, this Packer configuration will follow the instructions from the Kali Linux website to [build a custom Kali Linux image on DigitalOcean](https://www.kali.org/docs/cloud/digitalocean/):
 
 > A little while ago, they added support for [custom images](https://blog.digitalocean.com/custom-images/), which allows users to import virtual machine disks and use them as droplets. This is perfect for us as we can use our own version of Kali Linux in their cloud.

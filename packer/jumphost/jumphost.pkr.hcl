@@ -120,4 +120,12 @@ build {
     source      = "files/branding.jar"
     destination = "/etc/guacamole/extensions/branding.jar"
   }
+
+  # change the admin password
+  provisioner "shell" {
+    inline = [
+      "TOKEN=$(curl -s 'http://localhost:8080/guacamole/api/tokens' -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=guacadmin&password=guacadmin' | jq -r .authToken)",
+      "curl -s -X 'PUT' \"http://localhost:8080/guacamole/api/session/data/mysql/users/guacadmin/password?token=$TOKEN\" -H 'Content-Type: application/json' -d '{\"oldPassword\": \"guacadmin\", \"newPassword\": \"${local.config["guacamole"]["admin_password"]}\"}'"
+    ]
+  }
 }

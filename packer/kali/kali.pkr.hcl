@@ -49,18 +49,18 @@ source "virtualbox-iso" "kali-source" {
     "auto preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg country=CH ",
     "language=en keymap=en local=en_US keymap=us hostname=kali domain=''<enter>"
   ]
-  iso_url = "https://cdimage.kali.org/kali-2024.3/kali-linux-2024.3-installer-amd64.iso"
-  iso_checksum = "sha256:2ba1abf570ea0685ca4a97dd9c83a65670ca93043ef951f0cd7bbff914fa724a"
-  vm_name              = "kali"
-  headless             = "false"
-  http_directory       = "http"
-  guest_os_type        = "Debian_64"
-  memory               = 4096
-  cpus                 = 2
-  disk_size            = 20480
-  output_directory     = "output"
-  guest_additions_mode = "disable"
-  shutdown_command     = "echo 'kali' | sudo -S shutdown -P now"
+  iso_url                 = "https://cdimage.kali.org/kali-2024.3/kali-linux-2024.3-installer-amd64.iso"
+  iso_checksum            = "sha256:2ba1abf570ea0685ca4a97dd9c83a65670ca93043ef951f0cd7bbff914fa724a"
+  vm_name                 = "kali"
+  headless                = "false"
+  http_directory          = "http"
+  guest_os_type           = "Debian_64"
+  memory                  = 4096
+  cpus                    = 2
+  disk_size               = 20480
+  output_directory        = "output"
+  guest_additions_mode    = "disable"
+  shutdown_command        = "echo 'kali' | sudo -S shutdown -P now"
   ssh_username            = "kali"
   ssh_password            = "kali"
   ssh_port                = 22
@@ -128,15 +128,16 @@ build {
   # upload image to digitalocean spaces object storage
   # and then import it as a custom image
   post-processor "digitalocean-import" {
-    api_token         = "${local.config["digitalocean"]["token"]}"
-    space_name        = "${local.config["digitalocean"]["spaces_name"]}"
-    spaces_region     = "${local.config["digitalocean"]["spaces_region"]}"
-    spaces_key        = "${local.config["digitalocean"]["spaces_key"]}"
-    spaces_secret     = "${local.config["digitalocean"]["spaces_secret"]}"
-    image_name        = "kali-template"
-    image_description = "Packer import {{timestamp}}"
-    image_regions     = ["${local.config["digitalocean"]["region"]}"]
-    image_tags        = ["custom", "packer", "kali"]
+    api_token           = "${local.config["digitalocean"]["token"]}"
+    space_name          = "${local.config["digitalocean"]["spaces_name"]}"
+    spaces_region       = "${local.config["digitalocean"]["spaces_region"]}"
+    spaces_key          = "${local.config["digitalocean"]["spaces_key"]}"
+    spaces_secret       = "${local.config["digitalocean"]["spaces_secret"]}"
+    image_name          = "kali-template"
+    image_description   = "Packer import {{timestamp}}.vmdk"
+    image_regions       = ["${local.config["digitalocean"]["region"]}"]
+    image_tags          = ["custom", "packer", "kali"]
+    keep_input_artifact = true
   }
 
 }

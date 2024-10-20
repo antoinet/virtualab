@@ -31,20 +31,20 @@ data "digitalocean_domain" "lab_domain" {
 
 # hardcoded DNS record for the guacamole host (e.g. for direct connection via ssh)
 resource "digitalocean_record" "guacamole" {
-  name = "guacamole"
+  name   = "guacamole"
   domain = data.digitalocean_domain.lab_domain.id
-  type = "A"
-  value = digitalocean_droplet.jumphost.ipv4_address
-  ttl = 300
+  type   = "A"
+  value  = digitalocean_droplet.jumphost.ipv4_address
+  ttl    = 300
 }
 
 # DNS record for the the loadbalancer (used for HTTPS with the let's encrypt cert)
 resource "digitalocean_record" "loadbalancer" {
-  name = local.config["digitalocean"]["jumphost"]["hostname"]
+  name   = local.config["digitalocean"]["jumphost"]["hostname"]
   domain = data.digitalocean_domain.lab_domain.id
-  type = "A"
-  value = digitalocean_loadbalancer.virtualab-https-endpoint.ip
-  ttl = 300
+  type   = "A"
+  value  = digitalocean_loadbalancer.virtualab-https-endpoint.ip
+  ttl    = 300
 }
 
 # DNS records for the individual labboxes
@@ -52,7 +52,7 @@ resource "digitalocean_record" "labbox" {
   count  = length(digitalocean_droplet.labbox)
   domain = data.digitalocean_domain.lab_domain.id
   type   = "A"
-  name = "${local.config["digitalocean"]["labbox"]["hostname_prefix"]}-${format("%02d", count.index + 1)}"
+  name   = "${local.config["digitalocean"]["labbox"]["hostname_prefix"]}-${format("%02d", count.index + 1)}"
   value  = digitalocean_droplet.labbox[count.index].ipv4_address
   ttl    = 300
 }

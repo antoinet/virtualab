@@ -34,21 +34,16 @@ resource "digitalocean_droplet" "labbox" {
   image    = data.digitalocean_droplet_snapshot.labbox_snapshot.id
   count    = local.config["digitalocean"]["labbox"]["count"]
   name     = "${local.config["digitalocean"]["labbox"]["droplet_name_prefix"]}-${count.index + 1}"
-  region = local.config["digitalocean"]["region"]
+  region   = local.config["digitalocean"]["region"]
   size     = local.config["digitalocean"]["labbox"]["droplet_size"]
   vpc_uuid = digitalocean_vpc.virtualab-network.id
-  ssh_keys = [ data.digitalocean_ssh_key.terraform.id ]
+  ssh_keys = [data.digitalocean_ssh_key.terraform.id]
 
-  tags = ["labbox"]
-  depends_on = [ digitalocean_vpc.virtualab-network ]
+  tags       = ["labbox"]
+  depends_on = [digitalocean_vpc.virtualab-network]
 }
 
 resource "digitalocean_project_resources" "labbox" {
-  project = data.digitalocean_project.virtualab.id
+  project   = data.digitalocean_project.virtualab.id
   resources = digitalocean_droplet.labbox[*].urn
-}
-
-# TODO remove
-output "debug" {
-  value = digitalocean_droplet.labbox[0].name
 }

@@ -1,5 +1,5 @@
 #
-# virtua-lab configuration
+# virtualab configuration
 #
 
 # configuration settings for digitalocean
@@ -8,6 +8,13 @@ digitalocean:
   # digitalocean personal access token for API access
   # see: https://docs.digitalocean.com/reference/api/create-personal-access-token/
   token: "<paste your personal access token here>"
+
+  # digitalocean spaces object storage access (optional)
+  # this is only used during creation of some lab boxes (e.g. kali)
+  spaces_name: "virtualab"
+  spaces_region: "fra1"
+  spaces_key: "<paste your spaces key here>"
+  spaces_secret: "<paste your spaces secret here>"
 
   # target digitalocean region for the lab deployment
   # see: https://docs.digitalocean.com/platform/regional-availability/
@@ -18,8 +25,7 @@ digitalocean:
   project_name: "virtualab"
 
   # domain name used for the lab 
-  #domain: "example.com"
-  domain: "test.hackingnight.ch"
+  domain: "example.com"
 
   # the name of the ssh key registered in your digitalocean team
   # see: https://docs.digitalocean.com/platform/teams/upload-ssh-keys/
@@ -57,17 +63,33 @@ digitalocean:
     droplet_size: "s-2vcpu-4gb"
 
     # name of the snapshot used when provisioning the labbox droplets
-    #snapshot_name: "labbox_template"
-    snapshot_name: "kali-template"
+    snapshot_name: "labbox_template"
 
     # number of boxes to spin up
     count: 2
 
     # the hostname prefix of the labboxes
-    # together with the domain, will result e.g. in labbox-03.example.com
+    # together with the domain, will result e.g. in "labbox-3.example.com"
+    # at the same time, this will also constitute the username prefix 
+    # when provisioning users on the jumphost
     hostname_prefix: "labbox"
 
+    # the password prefix of the labboxes
+    # the effective password will result e.g. in "labbox-13" 
+    password_prefix: "labbox"
+
+    # the username used by the jumphost for the RDP connection
+    rdp_username: "labbox"
+
+    # the password used by the jumphost for the RDP connection
+    rdp_password: "labbox"
 
 
 # configuration settings for guacamole
 guacamole:
+
+  # the administrator username (don't change this)
+  admin_username: guacadmin
+
+  # the administrator password (change this)
+  admin_password: changeme

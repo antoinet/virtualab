@@ -27,10 +27,20 @@ Obviously, you will also need a DigitalOcean subscription. Get $200 of credit us
 
 ## Setup Instructions
 
-### DNS Setup
+### 1 Configuration File
+
+Copy `config.yaml.example` to `config.yaml`. This is where all the lab's configuration settings are stored.
+
+### 2 DigitalOcean Personal Access Token
+
+Create a full access personal access token and store it in `config.yaml` under `digitalocean.token`.
+
+For details follow the instructions at [How to Create a Personal Access Token](https://docs.digitalocean.com/reference/api/create-personal-access-token/).
+
+### 3 DNS Setup
 
 You need to delegate your lab DNS domain to digitalocean. To update your domain's delegation,
-use the following name server addresses at the registrar:
+set the following name server addresses at your registrar:
 
 ```
 ns1.digitalocean.com
@@ -40,10 +50,38 @@ ns3.digitalocean.com
 
 For details, see: [Point to DigitalOcean Name Servers From Common Domain Registrars](https://docs.digitalocean.com/products/networking/dns/getting-started/dns-registrars/).
 
-### Add your SSH key
+Store the lab domain name in `config.yaml` under `digitalocean.domain`.
+
+
+### 4 Add an SSH key
 
 Add at least one SSH key to your DigitalOcean account. This will be used to access your running droplets. See [How to Add SSH Public Keys to DigitalOcean](https://docs.digitalocean.com/platform/teams/upload-ssh-keys/) for details.
 
+By default the expected name of the SSH key is `terraform`. You can change this in `config.yaml` under `digitalocean.ssh_key_name`.
+
+### 5 Create Droplet Images
+
+For the lab operation, you will need to create at least two virtual machine images for the jumphost and the lab boxes.
+
+#### 5.1 Create the Jumphost Image
+
+See the instructions under [packer/jumphost](packer/jumphost/) to create the jumphost image. You will find corresponding configuration settings in `config.yaml` under `digitalocean.jumphost`.
+
+#### 5.2 Create the Lab Box Image
+
+The lab boxes are based on a snapshot or custom image of your choice. There is an example of a [Kali Linux](https://www.kali.org) image under [packer/kali](packer/kali/). You will find corresponding configuration settings in `config.yaml` under `digitalocean.labbox`.
+
+### 6 Deploy the Initial Cloud Setup
+
+See instructions under [terraform/setup](terraform/setup/) to deploy the initial cloud setup (e.g. DNS domain, certificate, lab project, etc).
+
+### 7 Deploy the Lab Infrastructure
+
+See instructions under [terraform/infra](terraform/infra/) to deploy the lab infrastructure. You can sepcify the number of lab boxes to deploy in `config.yaml` under `digitalocean.labbox.count`.
+
+### 8 Provision Users and Connections
+
+The last step consists in provisioning users on the jumphost and setting up corresponding RDP connections. This is achieved with the script in [utils/labmanger](utils/labmanager/).
 
 ## Tips / Tricks
 

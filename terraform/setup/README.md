@@ -9,10 +9,10 @@ This terraform configuration will deploy permament/"immortal" resources use for 
 **Note**: these resources do not generate any costs.
 
 ## Prerequisites
-You need to delegate your lab DNS domain to digitalocean. For details, see the [setup instructions](../README.md).
+You need to delegate your lab DNS domain to digitalocean. For details, see the [setup instructions](../../README.md).
 
 ## Usage
-If this is the first time invoking `terraform`, you need to initialize it:
+If this is the first time invoking `terraform` in this folder, you need to initialize it:
 ```bash
 $ terraform init
 ```

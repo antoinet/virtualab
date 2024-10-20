@@ -1,0 +1,6 @@
+jq
+pydo
+configparser
+prettytable
+requests
+pyyaml

@@ -32,19 +32,19 @@ data "digitalocean_droplet_snapshot" "jumphost_snapshot" {
 
 
 resource "digitalocean_droplet" "jumphost" {
-  image = data.digitalocean_droplet_snapshot.jumphost_snapshot.id
-  name  = local.config["digitalocean"]["jumphost"]["droplet_name"]
-  region = local.config["digitalocean"]["region"]
-  size  = local.config["digitalocean"]["jumphost"]["droplet_size"]
+  image    = data.digitalocean_droplet_snapshot.jumphost_snapshot.id
+  name     = local.config["digitalocean"]["jumphost"]["droplet_name"]
+  region   = local.config["digitalocean"]["region"]
+  size     = local.config["digitalocean"]["jumphost"]["droplet_size"]
   vpc_uuid = digitalocean_vpc.virtualab-network.id
-  ssh_keys = [ data.digitalocean_ssh_key.terraform.id ]
+  ssh_keys = [data.digitalocean_ssh_key.terraform.id]
 
-  tags = ["jumphost"]
-  depends_on = [ digitalocean_vpc.virtualab-network ]
+  tags       = ["jumphost"]
+  depends_on = [digitalocean_vpc.virtualab-network]
 }
 
 
 resource "digitalocean_project_resources" "jumphost" {
-  project = data.digitalocean_project.virtualab.id
+  project   = data.digitalocean_project.virtualab.id
   resources = [digitalocean_droplet.jumphost.urn]
 }
