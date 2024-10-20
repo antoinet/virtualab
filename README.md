@@ -1,11 +1,10 @@
 ![VirtuaLab](assets/virtualab-logo.png)
 
-Virtua Lab lets you build your own cloud virtual machine lab, whether you want to teach a class,
-train professionals, run a hackathon, host a hands-on-lab, etc.
+Virtua Lab lets you build your own cloud virtual machine lab, whether you want to teach a class, train professionals, run a hackathon, host a hands-on-lab, etc.
 
-The lab infrastructure runs on DigitalOcean infrastructure. It
-consists of a jumphost running [Apache Guacamole](https://guacamole.apache.org/) and as many
-lab boxes as you want (or can) spin up.
+The lab infrastructure runs on DigitalOcean infrastructure. It consists of a jumphost running [Apache Guacamole](https://guacamole.apache.org/) and as many lab boxes as you want (or can) spin up.
+
+This project originated from the [Hack The Box Meetup: Zurich, CH](https://www.meetup.com/hack-the-box-meetup-zurich-ch/), where I wanted to offer participants ready-to-use Kali boxes to avoid the time spent on VM setup. This setup conveniently provides access to the lab machines through the browser.
 
 ## Architecture
 
@@ -91,4 +90,4 @@ If you need to create more droplets than your current limit allows, you can requ
 
 ### DNS Negative TTL
 
-After destroying the lab infrastructure and removing the corresponding DNS records, any DNS resolver will start caching the inexistent records as negative results. This means that if you redeploy the lab in short time, it will not be reachable for the time specicied by the TTL. The TTL is defined in [terraform/infra/dns.tf](terraform/infra/dns.tf) with a value of 300s (5mins).
+After destroying the lab infrastructure and removing the corresponding DNS records, any DNS resolver will start caching the inexistent records as negative results. This means that if you redeploy the lab in short time, it will not be reachable for the time specified by the TTL (usually 1800s = 30mins).
