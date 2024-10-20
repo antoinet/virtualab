@@ -88,3 +88,7 @@ The last step consists in provisioning users on the jumphost and setting up corr
 ### Increase Droplet Limit
 
 If you need to create more droplets than your current limit allows, you can request an increase. See [How do I increase my Droplet limit?](https://www.digitalocean.com/community/questions/how-do-i-increase-my-droplet-limit) for details.
+
+### DNS Negative TTL
+
+After destroying the lab infrastructure and removing the corresponding DNS records, any DNS resolver will start caching the inexistent records as negative results. This means that if you redeploy the lab in short time, it will not be reachable for the time specicied by the TTL. The TTL is defined in [terraform/infra/dns.tf](terraform/infra/dns.tf) with a value of 300s (5mins).
