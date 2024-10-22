@@ -52,7 +52,7 @@ resource "digitalocean_record" "labbox" {
   count  = length(digitalocean_droplet.labbox)
   domain = data.digitalocean_domain.lab_domain.id
   type   = "A"
-  name   = "${local.config["digitalocean"]["labbox"]["hostname_prefix"]}-${format("%02d", count.index + 1)}"
+  name   = "${local.config["digitalocean"]["labbox"]["hostname_prefix"]}-${count.index + 1}"
   value  = digitalocean_droplet.labbox[count.index].ipv4_address
   ttl    = 300
 }
